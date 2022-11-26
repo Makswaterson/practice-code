@@ -47,3 +47,65 @@
 //     },
 //   },
 // };
+
+// function NameMe(first, last) {
+//   this.firstName = first;
+//   this.lastName = last;
+
+//   return {
+//     firstName: this.firstName,
+//     lastName: this.lastName,
+//     name: this.firstName + ' ' + this.lastName,
+//   };
+// }
+
+// var n = new NameMe('John', 'Doe');
+// console.log(n.firstName); //Expected: John
+// console.log(n.lastName); //Expected: Doe
+// console.log(n.name); //Expected: John Doe
+
+//Створивши клас NamedOne, яка приймає ім’я та прізвище як параметри та повертає
+//об’єкт із властивостями firstName, lastName і fullName ( = firstName + пробіл +
+//lastName ), які мають бути доступними.
+// class NamedOne {
+//   constructor(firstName, lastName) {
+//     this._firstName = firstName;
+//     this._lastName = lastName;
+//   }
+//   get firstName() {
+//     return this._firstName;
+//   }
+//   get lastName() {
+//     return this._lastName;
+//   }
+//   get fullName() {
+//     return this._firstName + '' + this._lastName;
+//   }
+// }
+// var namedOne = new NamedOne('Naomi', 'Wang');
+// console.log(namedOne.firstName); // -> "Naomi"
+// console.log(namedOne.lastName); // -> "Wang"
+// console.log(namedOne.fullName); // -> "Naomi Wang"
+
+// Виправте помилки, щоб код працював
+// const product = {
+//   price: 5000,
+//   showPrice() {
+//     console.log(this.price);
+//   },
+// };
+// product.showPrice();
+
+// Виправте помилки, щоб код працював
+// const product = {
+//   price: 5000,
+//   showPrice() {
+//     console.log(this.price);
+//   },
+// };
+
+// function callAction(action) {
+//   action.call(product);
+// }
+
+// callAction(product.showPrice);
