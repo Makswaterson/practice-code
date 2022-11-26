@@ -109,3 +109,33 @@
 // }
 
 // callAction(product.showPrice);
+
+const user = {
+  name: 'Artem',
+  city: 'Lviv',
+  sayHello(year, language) {
+    console.log(
+      `Hello my name is ${this.name} ,I'm from ${this.city},I'm ${year} years old, study ${language}`
+    );
+  },
+};
+user.sayHello(28, 'CSS');
+
+const den = {
+  name: 'Denys',
+  city: 'Rivne',
+};
+const yulia = {
+  name: 'Yulia',
+  city: 'Ternopil',
+};
+const alex = {
+  name: 'Alex',
+  city: 'Kyiv',
+};
+
+user.sayHello.call(den, 34, 'HTML');
+user.sayHello.apply(yulia, [22, 'JS']);
+const alexHello = user.sayHello.bind(alex);
+alexHello(23, 'React');
+alexHello(33, 'Node,js');
