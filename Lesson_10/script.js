@@ -58,27 +58,43 @@
   Перед тим як змінити емейл, у сеттері потрібно викликати приватний метод, який валідуватиме імейл (наявність собачки та крапки).
   Якщо імейл невалідний – нічого не робити і вивести в консоль 'Email is not valid!'
 */
-class Client {
-  #email;
-  constructor(login, email) {
-    this.login = login;
-    this.#email = email;
-  }
-  get email() {
-    return this.#email;
-  }
-  validation(value) {
-    return value.includes('@');
-  }
-  set email(value) {
-    if (this.validation(value)) {
-      this.#email = value;
-    } else {
-      alert('Email is not valid!');
-    }
-  }
-}
-const client = new Client('Maks', 'maks.@gmail.com');
-console.log(client);
-client.email = 'makswewe.@gmail.com';
-console.log(client);
+// class Client {
+//   #email;
+//   constructor(login, email) {
+//     this.login = login;
+//     this.#email = email;
+//   }
+//   get email() {
+//     return this.#email;
+//   }
+//   validation(value) {
+//     return value.includes('@');
+//   }
+//   set email(value) {
+//     if (this.validation(value)) {
+//       this.#email = value;
+//     } else {
+//       alert('Email is not valid!');
+//     }
+//   }
+// }
+// const client = new Client('Maks', 'maks.@gmail.com');
+// console.log(client);
+// client.email = 'makswewe.@gmail.com';
+// console.log(client);
+
+const parent = {
+  name: 'parent',
+  sayHello() {
+    console.log(`I'm  ${this.name}`);
+  },
+};
+const obj = Object.create(parent);
+const copyObj = Object.assign(parent);
+console.log('obj', obj);
+console.log('copyObj', copyObj);
+copyObj.age = 22;
+console.log('copyObj', copyObj);
+console.log(parent);
+
+// Object.create(parent) i Object.assign(parent) залежні об'єкти в яких змінюється обєкт і прототайп через посилання ...
