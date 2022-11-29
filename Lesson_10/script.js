@@ -100,20 +100,48 @@
 // Object.create(parent) i Object.assign(parent) залежні об'єкти в яких змінюється обєкт і прототайп через посилання ...
 
 class User {
+  static counter = 0;
+  static addUser() {
+    // User.counter +=1
+    this.counter += 1;
+    console.log(this.counter);
+  }
   #email;
   constructor(name = 'Initail value', password, email) {
-    //         this.#email = email;
-    //         this.name = name;
-    //         this.password = password;
-    //
+    this.#email = email;
+    this.name = name;
+    this.password = password;
+    User.addUser();
+  }
+  sayHello() {
+    console.log(`Hello I'm ${this.name}`);
+  }
+  createValue(value) {
+    this.value = value;
+  }
+  #checkEmail(value) {
+    const response = value.includes('@') && value.includes('.') && value.length > 10;
+    return response;
+  }
+
+  get emailValue() {
+    console.log(this.#email);
+  }
+
+  set emailValue(newValue) {
+    if (this.#checkEmail(newValue)) {
+      this.#email = newValue;
+    } else {
+      alert('Invalid email 😢');
+    }
   }
 }
-sayHello();{
-  console.log(`hello I'm ${this.name}`);
-}
-createValue(value); {
-  this.value = value;
-}
-#checkEmail(value){
-const responce = value.includes('@')&& value.includes('.') && value.length > 10;
-}
+
+const artem = new User('Artem', 'qwerty', 'test@gmail.com');
+console.log(artem.name);
+artem.name = 'Oleg';
+artem.emailValue;
+artem.emailValue = 'asa';
+artem.emailValue = '1234asdfgfhkjl@gm.mm';
+// artem.#checkEmail()
+console.log(artem);
