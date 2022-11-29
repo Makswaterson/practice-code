@@ -68,7 +68,7 @@
 //     return this.#email;
 //   }
 //   validation(value) {
-//     return value.includes('@');
+//     return value.includes('@')&& value.includes('.') && value.length > 10;
 //   }
 //   set email(value) {
 //     if (this.validation(value)) {
@@ -83,18 +83,37 @@
 // client.email = 'makswewe.@gmail.com';
 // console.log(client);
 
-const parent = {
-  name: 'parent',
-  sayHello() {
-    console.log(`I'm  ${this.name}`);
-  },
-};
-const obj = Object.create(parent);
-const copyObj = Object.assign(parent);
-console.log('obj', obj);
-console.log('copyObj', copyObj);
-copyObj.age = 22;
-console.log('copyObj', copyObj);
-console.log(parent);
+// const parent = {
+//   name: 'parent',
+//   sayHello() {
+//     console.log(`I'm  ${this.name}`);
+//   },
+// };
+// const obj = Object.create(parent);
+// const copyObj = Object.assign(parent);
+// console.log('obj', obj);
+// console.log('copyObj', copyObj);
+// copyObj.age = 22;
+// console.log('copyObj', copyObj);
+// console.log(parent);
 
 // Object.create(parent) i Object.assign(parent) залежні об'єкти в яких змінюється обєкт і прототайп через посилання ...
+
+class User {
+  #email;
+  constructor(name = 'Initail value', password, email) {
+    //         this.#email = email;
+    //         this.name = name;
+    //         this.password = password;
+    //
+  }
+}
+sayHello();{
+  console.log(`hello I'm ${this.name}`);
+}
+createValue(value); {
+  this.value = value;
+}
+#checkEmail(value){
+const responce = value.includes('@')&& value.includes('.') && value.length > 10;
+}
