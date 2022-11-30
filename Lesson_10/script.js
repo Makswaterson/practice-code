@@ -138,10 +138,12 @@ class User {
 }
 
 const artem = new User('Artem', 'qwerty', 'test@gmail.com');
-console.log(artem.name);
-artem.name = 'Oleg';
-artem.emailValue;
-artem.emailValue = 'asa';
-artem.emailValue = '1234asdfgfhkjl@gm.mm';
+const dima = new User('Dima', 'ytrewq');
+const maks = new User('Maks', 'poiuye');
+// console.log(artem.name);
+// artem.name = 'Oleg';
+// artem.emailValue;
+// artem.emailValue = 'asa';
+// artem.emailValue = '1234asdfgfhkjl@gm.mm';
 // artem.#checkEmail()
-console.log(artem);
+// console.log(artem);
