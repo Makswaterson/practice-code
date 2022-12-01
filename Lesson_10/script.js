@@ -480,11 +480,13 @@
 //     language: `html`,
 //   },
 // ];
+// getStudentsLang(students, lang){
+//   const studentsLanguage = students
+//   .filter(student => student.language === lang)
+//   .map(student => student.name);
+// }
 
-// const studentsLanguage = (students, lang) =>
-//   students.filter(student => student.language === lang).map(student => student.name);
-
-// console.log(studentsLanguage);
+// getStudentsLang(student,[`html`])
 
 // -----------------------------------------TASK 7------------------------------------------//
 // Створити функцію яка приймає 1 параметр масив продуктів і повертає мутований масив
