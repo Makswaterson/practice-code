@@ -313,18 +313,25 @@
 //     this.items = arr;
 //   }
 //   addNote(note) {
-//     if (!this.items.includes(note)) {
+//     const inArray = this.items.some(item => item.text === note.text);
+//     console.log(inArray);
+//     if (!inArray) {
 //       this.items.push(note);
 //     }
+//     console.log(this.items);
 //   }
 //   removeNote(text) {
-//     if (this.items.includes(text)) {
-//       const idx = this.items.indexOf(text);
+//     const outArray = this.items.some(item => item.text === text);
+//     console.log(outArray);
+//     if (outArray) {
+//       const idx = this.items.findIndex(item => item.text === text);
+//       console.log(idx);
 //       this.items.splice(idx, 1);
 //     }
 //   }
 //   updatePriority(text, newPriority) {
-//     if (this.items.includes(text)) {
+//     const inArray = this.items.some(item => item.text === text);
+//     if (inArray) {
 //       this.items.priority = newPriority;
 //     }
 //   }
@@ -353,14 +360,15 @@
 // Напишіть клас Toggle який приймає об'єкт налаштувань {isOpen: boolean} і оголошує одну властивість on - стан вкл/викл (true/false). За замовчуванням значення властивості on повинно бути false.
 
 // class Toggle {
-//   constructor(obj) {
-//     this._on = obj;
+//   constructor({ isOpen }) {
+//     this.on = isOpen;
 //   }
-//   get on() {
-//     return this._on;
-//   }
-//   set on(newOn) {
-//     this._on = newOn;
+//   toggle() {
+//     if (this.on) {
+//       this.on = false;
+//     } else {
+//       this.on = true;
+//     }
 //   }
 // }
 
@@ -370,13 +378,6 @@
 // firstToggle.toggle();
 // console.log(firstToggle.on);
 // console.groupEnd('firstToggle');
-
-// const secondToggle = new Toggle();
-// console.group('secondToggle');
-// console.log(secondToggle.on);
-// secondToggle.toggle();
-// console.log(secondToggle.on);
-// console.groupEnd('secondToggle');
 
 // https://www.freecodecamp.org/ukrainian/learn/javascript-algorithms-and-data-structures/#basic-javascript
 // __________________________________________ //
@@ -437,55 +438,53 @@
 // 2 Мову програмування яку потрібно знайти.
 // Функція повертає масив імен користувачів які вивчають цю мову.
 
-// const students = [{
+// const students = [
+//   {
 //     name: `Lika`,
-//     language: `html`
-
-// }, {
+//     language: `html`,
+//   },
+//   {
 //     name: `Anton`,
-//     language: `css`
-
-// }, {
+//     language: `css`,
+//   },
+//   {
 //     name: `Andriy`,
-//     language: `js`
-
-// }, {
+//     language: `js`,
+//   },
+//   {
 //     name: `Vova`,
-//     language: `html`
-
-// }, {
+//     language: `html`,
+//   },
+//   {
 //     name: `Alina`,
-//     language: `css`
-
-// }, {
+//     language: `css`,
+//   },
+//   {
 //     name: `Egor`,
-//     language: `js`
-
-// }, {
+//     language: `js`,
+//   },
+//   {
 //     name: `Aleksandr`,
-//     langunage: `html`
-
-// }, {
+//     langunage: `html`,
+//   },
+//   {
 //     name: `Taras`,
-//     language: `css`
-
-// }, {
+//     language: `css`,
+//   },
+//   {
 //     name: `Ivan`,
-//     language: `js`
-
-// }, {
+//     language: `js`,
+//   },
+//   {
 //     name: `Make`,
-//     language: `html`
+//     language: `html`,
+//   },
+// ];
 
-// },];
+// const studentsLanguage = (students, lang) =>
+//   students.filter(student => student.language === lang).map(student => student.name);
 
-// getStudentsLanguage(stud, lang) {
-//   const studLang = students
-//   .map(student => student.name)
-//   .filter(student => student.language[`html`])
-
-// }
-// console.log(getStudentsLanguage(studLang))
+// console.log(studentsLanguage);
 
 // -----------------------------------------TASK 7------------------------------------------//
 // Створити функцію яка приймає 1 параметр масив продуктів і повертає мутований масив
