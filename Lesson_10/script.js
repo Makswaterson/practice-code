@@ -215,17 +215,41 @@
 // Example 2 - Сховище
 // Напиши клас Storage який створює об'єкти для керування складом товарів. При виклику отримуватиме один аргумент - початковий масив товарів і записуватиме його властивість items.
 
+// class Storage {
+//   constructor(arr) {
+//     this.items = arr;
+//   }
+//   get productItems() {
+//     return this.items;
+//   }
+//   set productItems(item) {
+//     if (!this.items.includes(item)) {
+//       this.items.push(item);
+//     }
+//   }
+//   removeItem(item) {
+//     //  if (this.items.includes(item)) {
+//     //    const idx = this.items.indexOf(item)
+//     //    this.items.splice(idx,1)
+//     //  }
+//     const idx = this.items.indexOf(item);
+//     // х= 0 Якщо індекс 0(~-1) тоді -(х +0),Якщо індекс -1(~0) тоді -(х +1)
+//     // -(idx + 1) === ~idx
+//     if (!!~idx) {
+//       this.items.splice(idx, 1);
+//     }
+//   }
+// }
 
-
-// // Додай методи класу:
+// // // Додай методи класу:
 
 // // getItems() - повертає масив товарів.
-// // addItem(item) - отримує новий товар і додає його до поточних.
-// // removeItem(item) - отримує товар і, якщо він є, видаляє його з поточних.
+// // // addItem(item) - отримує новий товар і додає його до поточних.
+// // // removeItem(item) - отримує товар і, якщо він є, видаляє його з поточних.
 // const storage = new Storage(['🍎', '🍋', '🍇', '🍑']);
 
 // // const items = storage.productItems;
-// // console.log (items); // [ '🍎', '🍋', '🍇', '🍑' ]
+// // console.log(items); // [ '🍎', '🍋', '🍇', '🍑' ]
 
 // // storage.productItems = '🍌';
 // // storage.productItems = '🍋';
@@ -233,3 +257,285 @@
 
 // storage.removeItem('🍋');
 // console.table(storage.items); // [ '🍎', '🍇', '🍑', '🍌' ]
+
+// Example 3 - User
+// Напиши клас User який створює об'єкт із властивостями login та email. Оголоси приватні властивості #login та #email, доступ до яких зроби через гетер та сетер login та email.
+
+// class User {
+//   #login;
+//   #email;
+//   constructor({ email, login }) {
+//     this.#email = email;
+//     this.#login = login;
+//   }
+//   get email() {
+//     return this.#email;
+//   }
+//   set email(value) {
+//     this.#email = value;
+//   }
+//   get login() {
+//     return this.#login;
+//   }
+//   set login(value) {
+//     this.#login = value;
+//   }
+// }
+
+// const mango = new User({
+//   login: 'Mango',
+//   email: 'mango@dog.woof',
+// });
+
+// console.log(mango.login); // Mango
+// mango.login = 'Mangodoge';
+// console.log(mango.login); // Mangodoge
+
+// const poly = new User({
+//   login: 'Poly',
+//   email: 'poly@mail.com',
+// });
+
+// console.log(poly.login); // Poly
+// poly.login = 'Polycutie';
+// console.log(poly.login); // Polycutie
+
+// Example 4 - Нотатки
+// Напиши клас Notes який керує колекцією нотаток у властивості items. Замітка це об'єкт із властивостями text та priority. Додай класу статичну властивість Priority, у якому зберігатиметься об'єкт із пріоритетами.
+
+// class Notes {
+//   static Priority = {
+//     LOW: 'low',
+//     NORMAL: 'normal',
+//     HIGH: 'high',
+//   };
+//   constructor(arr) {
+//     this.items = arr;
+//   }
+//   addNote(note) {
+//     if (!this.items.includes(note)) {
+//       this.items.push(note);
+//     }
+//   }
+//   removeNote(text) {
+//     if (this.items.includes(text)) {
+//       const idx = this.items.indexOf(text);
+//       this.items.splice(idx, 1);
+//     }
+//   }
+//   updatePriority(text, newPriority) {
+//     if (this.items.includes(text)) {
+//       this.items.priority = newPriority;
+//     }
+//   }
+// }
+
+// Додай методи addNote(note), removeNote(text) та updatePriority(text, newPriority).
+
+// const myNotes = new Notes([]);
+
+// myNotes.addNote({ text: 'Моя перша замітка', priority: Notes.Priority.LOW });
+// console.log(myNotes.items);
+
+// myNotes.addNote({
+//   text: 'Моя друга замітка',
+//   priority: Notes.Priority.NORMAL,
+// });
+// console.log(myNotes.items);
+
+// myNotes.removeNote('Моя перша замітка');
+// console.log(myNotes.items);
+
+// myNotes.updatePriority('Моя друга замітка', Notes.Priority.HIGH);
+// console.log(myNotes.items);
+
+// Example 5 - Toggle
+// Напишіть клас Toggle який приймає об'єкт налаштувань {isOpen: boolean} і оголошує одну властивість on - стан вкл/викл (true/false). За замовчуванням значення властивості on повинно бути false.
+
+// class Toggle {
+//   constructor(obj) {
+//     this._on = obj;
+//   }
+//   get on() {
+//     return this._on;
+//   }
+//   set on(newOn) {
+//     this._on = newOn;
+//   }
+// }
+
+// const firstToggle = new Toggle({ isOpen: true });
+// console.group('firstToggle');
+// console.log(firstToggle.on);
+// firstToggle.toggle();
+// console.log(firstToggle.on);
+// console.groupEnd('firstToggle');
+
+// const secondToggle = new Toggle();
+// console.group('secondToggle');
+// console.log(secondToggle.on);
+// secondToggle.toggle();
+// console.log(secondToggle.on);
+// console.groupEnd('secondToggle');
+
+// https://www.freecodecamp.org/ukrainian/learn/javascript-algorithms-and-data-structures/#basic-javascript
+// __________________________________________ //
+// -----------------------------------------TASK 1------------------------------------------//
+// 1 Створити метод об'єкту який буде приймати 1 параметр назву факультету та повертати списoк імен учнів факультету
+// 2 Створити метод об'єкту який буде приймати 1 параметр назву факультету та повертати кількість очків факультета
+// 3 Створити метод об'єкту який буде виводити ім'я факультету в якого більше очків
+
+// const hogvarts = {
+//   griffindor: [
+//     {
+//       name: 'Harry',
+//       points: 17,
+//     },
+//     {
+//       name: 'Hermiona',
+//       points: 19,
+//     },
+//     {
+//       name: 'Ron',
+//       points: 14,
+//     },
+//   ],
+//   sliserin: [
+//     {
+//       name: 'Draco',
+//       points: 17,
+//     },
+//     {
+//       name: 'Goyl',
+//       points: 14,
+//     },
+//     {
+//       name: 'Crabbe',
+//       points: 5,
+//     },
+//   ],
+//   getStudentsOfFaculty(facultyName) {
+//     return this[facultyName].map(student => student.name);
+//   },
+//   getStudentsOfPoints(facultyName) {
+//     return this[facultyName].reduce((acc, student) => (acc += student.points), 0);
+//   },
+//   getStudentsOfWinner(){
+//     this['griffindor'].reduce((acc, student) => (acc += students.points), 0) >
+//     this['sliserin'].reduce((acc, student) => (acc += students.points), 0)
+//       ? 'Winner is Griffindor'
+//       : 'Winner is Sliserin';
+//   }
+// };
+// hogvarts.getStudentsOfFaculty('griffindor');
+// hogvarts.getStudentsOfPoints('sliserin');
+// hogvarts.getStudentsOfWinner();
+
+// -----------------------------------------TASK 2------------------------------------------//
+// Створити функцію яка буде приймати 2 параметра.
+// 1 Масив студентів.
+// 2 Мову програмування яку потрібно знайти.
+// Функція повертає масив імен користувачів які вивчають цю мову.
+
+// const students = [{
+//     name: `Lika`,
+//     language: `html`
+
+// }, {
+//     name: `Anton`,
+//     language: `css`
+
+// }, {
+//     name: `Andriy`,
+//     language: `js`
+
+// }, {
+//     name: `Vova`,
+//     language: `html`
+
+// }, {
+//     name: `Alina`,
+//     language: `css`
+
+// }, {
+//     name: `Egor`,
+//     language: `js`
+
+// }, {
+//     name: `Aleksandr`,
+//     langunage: `html`
+
+// }, {
+//     name: `Taras`,
+//     language: `css`
+
+// }, {
+//     name: `Ivan`,
+//     language: `js`
+
+// }, {
+//     name: `Make`,
+//     language: `html`
+
+// },];
+
+// getStudentsLanguage(stud, lang) {
+//   const studLang = students
+//   .map(student => student.name)
+//   .filter(student => student.language[`html`])
+
+// }
+// console.log(getStudentsLanguage(studLang))
+
+// -----------------------------------------TASK 7------------------------------------------//
+// Створити функцію яка приймає 1 параметр масив продуктів і повертає мутований масив
+// Потрібно перебрати масив і якщо він має об'єкти в яких дублюються айді то квонтіті цих елементів потрібно сплюсувати
+// а ті обє'кти в яких айді співпав видалити з масиву.
+// (Потрібно мутувати масив, створювати новий не потрібно)
+
+// const products = [
+//   {
+// id: 'sku1',
+//     qty: 1,
+//   },
+//   {
+//     id: 'sku2',
+//     qty: 2,
+//   },
+//   {
+//     id: 'sku3',
+//     qty: 3,
+//   },
+//   {
+//     id: 'sku1',
+//     qty: 6,
+//   },
+//   {
+//     id: 'sku1',
+//     qty: 8,
+//   },
+//   {
+//     id: 'sku2',
+//     qty: 19,
+//   },
+//   {
+//     id: 'sku4',
+//     qty: 1,
+//   },
+// ];
+
+// function foo(array) {
+//   for (let i = 0; i < array.length; i += 1) {
+//     console.log(array[i]);
+//     for (let j = i + 1; j < array.length; j += 1) {
+//       console.log(array[j]);
+//       if (array[i].id === array[j].id) {
+//         array[i].qty += array[j].qty;
+//         array.splice(j, 1);
+//         j -= 1;
+//       }
+//     }
+//   }
+// }
+// foo(products);
+// console.log(products);
