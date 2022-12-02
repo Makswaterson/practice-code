@@ -309,6 +309,58 @@
 //     NORMAL: 'normal',
 //     HIGH: 'high',
 //   };
+//   constructor(items) {
+//     this.items = items;
+//   }
+//   addNote(note) {
+//     this.items.push(note);
+//   }
+//   removeNote(text) {
+//     const element = this.items.find(value => value.text === text);
+//     if (this.items.includes(element)) {
+//       const index = this.items.indexOf(element);
+//       this.items.splice(index, 1);
+//     }
+//   }
+//   updatePriority(text, newPriority) {
+//     return this.items.map(value => (value.text === text ? (value.priority = newPriority) : value));
+//   }
+// }
+
+// class Notes {
+//   static Priority = {
+//     LOW: 'low',
+//     NORMAL: 'normal',
+//     HIGH: 'high',
+//   };
+//   constructor(arr) {
+//     this.items = arr;
+//   }
+//   addNote(note) {
+//     if (!this.items.includes(note)) {
+//       this.items.push(note);
+//     }
+//   }
+//   removeNote(text) {
+//     if (this.items.some(el => el.text === text)) {
+//       const idx = this.items.findIndex(el => el.text === text);
+//       this.items.splice(idx, 1);
+//     }
+//   }
+//   updatePriority(text, newPriority) {
+//     if (this.items.some(el => el.text === text)) {
+//       const item = this.items.find(el => el.text === text);
+//       item.priority = newPriority;
+//     }
+//   }
+// }
+
+// class Notes {
+//   static Priority = {
+//     LOW: 'low',
+//     NORMAL: 'normal',
+//     HIGH: 'high',
+//   };
 //   constructor(arr) {
 //     this.items = arr;
 //   }
@@ -321,18 +373,19 @@
 //     console.log(this.items);
 //   }
 //   removeNote(text) {
-//     const outArray = this.items.some(item => item.text === text);
-//     console.log(outArray);
-//     if (outArray) {
+//     // const outArray = this.items.some(item => item.text === text);
+//     // console.log(outArray);
+//     if (this.items.some(item => item.text === text)) {
 //       const idx = this.items.findIndex(item => item.text === text);
 //       console.log(idx);
 //       this.items.splice(idx, 1);
 //     }
 //   }
 //   updatePriority(text, newPriority) {
-//     const inArray = this.items.some(item => item.text === text);
-//     if (inArray) {
-//       this.items.priority = newPriority;
+//     // const inArray = this.items.some(item => item.text === text);
+//     if (this.items.some(item => item.text === text)) {
+//       const item = this.items.find(item => item.text === text);
+//       item.priority = newPriority;
 //     }
 //   }
 // }
@@ -340,20 +393,15 @@
 // Додай методи addNote(note), removeNote(text) та updatePriority(text, newPriority).
 
 // const myNotes = new Notes([]);
-
 // myNotes.addNote({ text: 'Моя перша замітка', priority: Notes.Priority.LOW });
 // console.log(myNotes.items);
-
-// myNotes.addNote({
-//   text: 'Моя друга замітка',
-//   priority: Notes.Priority.NORMAL,
-// });
+// myNotes.addNote({ text: 'Моя друга замітка', priority: Notes.Priority.NORMAL });
 // console.log(myNotes.items);
-
+// myNotes.addNote({ text: 'Моя третя замітка', priority: Notes.Priority.HIGH });
+// console.log(myNotes.items);
 // myNotes.removeNote('Моя перша замітка');
 // console.log(myNotes.items);
-
-// myNotes.updatePriority('Моя друга замітка', Notes.Priority.HIGH);
+// myNotes.updatePriority('Моя перша замітка', Notes.Priority.HIGH);
 // console.log(myNotes.items);
 
 // Example 5 - Toggle
@@ -483,7 +531,7 @@
 // const getStudentsLang = (students, lang) =>
 //   students.filter(student => student.language === lang).map(student => student.name);
 
-// console.log(getStudentsLang());
+// console.log(getStudentsLang(students, 'js'));
 
 // -----------------------------------------TASK 7------------------------------------------//
 // Створити функцію яка приймає 1 параметр масив продуктів і повертає мутований масив
@@ -537,3 +585,5 @@
 // }
 // foo(products);
 // console.log(products);
+
+//
