@@ -586,4 +586,120 @@
 // foo(products);
 // console.log(products);
 
-//
+////////////// виводимо Alphabet,,,,,,,,,,,
+
+// let a = 'a'; ///97
+// console.log(a.charCodeAt());
+// let z = 'z'; ///122
+// console.log(z.charCodeAt());
+
+// console.log(String.fromCharCode(97));
+// console.log(String.fromCharCode(122));
+
+// function Alphabet() {
+//   for (let i = 97; i < 122; i += 1) {
+//     console.log(String.fromCharCode(i));
+//   }
+// }
+// Alphabet();
+
+// function Alphabet(displayAlph) {
+//   let a = 'a';
+//   let z = 'z';
+//   let Alf = '';
+//   for (let i = a.charCodeAt(); i <= z.charCodeAt(); i += 1) {
+//     let letter = String.fromCharCode(i);
+//     Alf += letter;
+//   }
+//   displayAlph(Alf);
+// }
+
+// function displayAlph(str) {
+//   for (let i = 0; i < str.length; i++) {
+//     console.log(str[i]);
+//   }
+// }
+// displayAlph('abcd');
+// Alphabet(displayAlph);
+
+// //////////////////////////////////////////////////////////////////////////////////////////
+
+// const salary = [1000, 2000, 3000, 4000];
+// function totalSalary(arr, bonus) {
+//   let total = 0;
+//   for (const el of arr) {
+//     total += el * bonus;
+//   }
+//   return total;
+// }
+// console.log(totalSalary(salary, 0.12));
+
+// const mike = {
+//   name: 'Mike',
+//   age: 25,
+// };
+
+// const sara = {
+//   name: 'Sara',
+//   age: 22,
+//   showInfo() {
+//     console.log(this.name, this.age);
+//   },
+// };
+// sara.showInfo.call(mike);
+
+// user.name = 'Andrey';
+// user['name'] = 'Alex';
+// user.status = true;
+// delete user.name;
+// console.log(mike);
+
+///////////////////////////////////////////////////////////////////////////////
+
+// const salary = [3500, 1000, 2000, 3000, 4000];
+// const min = Math.min(...salary);
+// console.log(min);
+
+// const salary = [3500, 1000, 2000, 3000, 4000];
+// const min = Math.min.apply(Math, salary);
+// console.log(min);
+
+const germanCars = [
+  {
+    id: 1,
+    title: 'BMW',
+  },
+  {
+    id: 2,
+    title: 'Mercedes',
+  },
+  {
+    id: 3,
+    title: 'Audi',
+  },
+];
+const japaniseCars = [
+  {
+    id: 1,
+    title: 'Toyota',
+  },
+  {
+    id: 2,
+    title: 'Nissan',
+  },
+  {
+    id: 3,
+    title: 'Honda',
+  },
+];
+const carInfo = {
+  getInfo() {
+    console.log(this.title);
+  },
+};
+function getSpecs(carArrayObj, info) {
+  for (const car of carArrayObj) {
+    info.getInfo.call(car);
+  }
+}
+getSpecs(japaniseCars, carInfo);
