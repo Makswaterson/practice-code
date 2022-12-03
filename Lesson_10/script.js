@@ -664,42 +664,97 @@
 // const min = Math.min.apply(Math, salary);
 // console.log(min);
 
-const germanCars = [
-  {
-    id: 1,
-    title: 'BMW',
-  },
-  {
-    id: 2,
-    title: 'Mercedes',
-  },
-  {
-    id: 3,
-    title: 'Audi',
-  },
-];
-const japaniseCars = [
-  {
-    id: 1,
-    title: 'Toyota',
-  },
-  {
-    id: 2,
-    title: 'Nissan',
-  },
-  {
-    id: 3,
-    title: 'Honda',
-  },
-];
-const carInfo = {
-  getInfo() {
-    console.log(this.title);
-  },
-};
-function getSpecs(carArrayObj, info) {
-  for (const car of carArrayObj) {
-    info.getInfo.call(car);
-  }
-}
-getSpecs(japaniseCars, carInfo);
+// const germanCars = [
+//   {
+//     id: 1,
+//     title: 'BMW',
+//   },
+//   {
+//     id: 2,
+//     title: 'Mercedes',
+//   },
+//   {
+//     id: 3,
+//     title: 'Audi',
+//   },
+// ];
+// const japaniseCars = [
+//   {
+//     id: 1,
+//     title: 'Toyota',
+//   },
+//   {
+//     id: 2,
+//     title: 'Nissan',
+//   },
+//   {
+//     id: 3,
+//     title: 'Honda',
+//   },
+// ];
+
+////////////////////////////////////////////////////////////////////////////////
+
+//const carInfo = {
+//   getInfo() {
+//     console.log(this.title);
+//   },
+// };
+// function getSpecs(carArrayObj, info) {
+//   for (const car of carArrayObj) {
+//     info.getInfo.call(car);
+//   }
+// }
+// getSpecs(japaniseCars, carInfo);
+
+// class Car {
+//   constructor(carArrayObj, info) {
+//     this.carArrayObj = carArrayObj;
+//     this.info = info;
+//   }
+
+//   getSpecs(carArrayObj, info) {
+//     for (const car of carArrayObj) {
+//       info.getInfo.call(car);
+//     }
+//   }
+//   init() {
+//     this.getSpecs(this.carArrayObj, this.info);
+//   }
+// }
+
+// const carInfo = {
+//   getInfo() {
+//     console.log(this.title);
+//   },
+// };
+// const gc = new Car(germanCars, carInfo);
+// gc.init();
+// const jc = new Car(japaniseCars, carInfo);
+// jc.init();
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+// class Car {
+//   constructor(carArrayObj, info) {
+//     this.carArrayObj = carArrayObj;
+//     this.info = info;
+//   }
+//   getInfo() {
+//     console.log(this.title);
+//   }
+
+//   getSpecs(carArrayObj) {
+//     for (const car of carArrayObj) {
+//       this.getInfo.call(car);
+//     }
+//   }
+//   init() {
+//     this.getSpecs(this.carArrayObj);
+//   }
+// }
+
+// const gc = new Car(germanCars);
+// gc.init();
+
+///////////////////////////////////////////////////////////////////////
