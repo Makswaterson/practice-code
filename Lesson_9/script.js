@@ -234,3 +234,30 @@
 // };
 
 // console.log(calculator.add.call(calc));
+
+/////////////////////////////Як можна додати в масив ?????
+
+// addItem(item) {
+//     const { name, price, qty } = item;
+//     const newItem = {
+//         name,
+//         price,
+//         qty,
+//         id: this.generateId(),
+//     };
+//     this.item.push(newItem);
+// }
+
+// addItem({ name, price, qty }){
+//      const newItem = {
+//         name,
+//         price,
+//         qty,
+//         id: this.generateId(),
+//     };
+//     this.item = [...this.item, newItem];
+// };
+// addItem({ name, price, qty }){
+
+//     this.item = [...this.item, { name, price, qty,id: this.generateId() }];
+// };
