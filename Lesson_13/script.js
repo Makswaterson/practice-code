@@ -18,3 +18,6 @@ const instruments = [
     price: 2000,
   },
 ];
+
+const list = document.querySelector('.list');
+console.log(list);
