@@ -20,4 +20,19 @@ const instruments = [
 ];
 
 const list = document.querySelector('.list');
-console.log(list);
+const markup = instruments.reduce(
+  (acc, { id, img, name, price }) =>
+    acc +
+    `<li data-product-id="${id}">
+    <img src="${img}" alt="${name}" width = "150px" >
+    <h2>Назва товару</h2>
+    <p>Ціна ${price}</p>
+     <div>
+                    <button type="button" class="js-cart">Add to cart</button>
+                    <button type="button" class="js-favorite">Add to favorite</button>
+                </div>
+    </li>`,
+  ''
+);
+list.insertAdjacentHTML('beforeend', markup);
+console.log(markup);
