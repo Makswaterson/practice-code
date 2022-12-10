@@ -20,6 +20,8 @@ const instruments = [
 ];
 
 const list = document.querySelector('.list');
+const basket = [];
+const favorite = [];
 const markup = instruments.reduce(
   (acc, { id, img, name, price }) =>
     acc +
@@ -39,8 +41,42 @@ console.log(markup);
 list.addEventListener('click', onClick);
 
 function onClick(evt) {
-  if (!evt.target.classList.contains('js - cart')) {
-    const currentElement = evt.target.closest('.js-item');
-    console.log(currentElement);
-  } else if (evt.target.classList.conains('js-favorite'));
+  if (!evt.target.classList.contains('js-cart') && !evt.target.classList.contains('js-favorite')) {
+    return;
+  }
+
+  if (evt.target.classList.contains('js-cart')) {
+    // const currentElement = evt.target.closest('.js-item');
+    // const productId = Number(currentElement.dataset.productId);
+    // const product = instruments.find(({ id }) => id === productId);
+    const product = findProduct(evt.target);
+    basket.push(product);
+    console.log(basket);
+  } else if (evt.target.classList.contains('js-favorite')) {
+    // const currentElement = evt.target.closest('.js-item');
+    // const productId = Number(currentElement.dataset.productId);
+    // const product = instruments.find(({ id }) => id === productId);
+    const product = { ...findProduct(evt.target) };
+    const haveProduct = favorite.find(({ id }) => id === product.id);
+    if (haveProduct) {
+      haveProduct.qty += 1;
+    } else {
+      product.qty = 1;
+      favorite.push(product);
+    }
+
+    console.log(favorite);
+  }
+}
+
+/**
+ *
+ * @param {Object} elem
+ * @returns {Object}
+ */
+function findProduct(elem) {
+  const currentElement = elem.closest('.js-item');
+  const productId = Number(currentElement.dataset.productId);
+  const product = instruments.find(({ id }) => id === productId);
+  return product;
 }
