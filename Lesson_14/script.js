@@ -1,3 +1,9 @@
+// https://bundlephobia.com/
+
+// 1 Підключення
+// 2 Ініціалізація екземпляру класу (обов'язково дивитись приклади в докі)
+// 3 Розглянути методи які присутні на нашому екземплярі класу
+
 const cats = [
   'https://i.ytimg.com/vi/iKA6ZXpGcGQ/maxresdefault.jpg',
   'https://i.natgeofe.com/n/46b07b5e-1264-42e1-ae4b-8a021226e2d0/domestic-cat_thumb_square.jpg',
@@ -32,3 +38,21 @@ const markup = cats.reduce(
   ''
 );
 list.insertAdjacentHTML('beforeend', markup);
+
+// let counter = 0;
+// document.addEventListener('scroll', _.throttle(onScroll, 1500, { leading: true, trailing: false }));
+
+// function onScroll(evt) {
+//   counter += 1;
+//   console.log(evt);
+//   console.log(counter);
+// }
+const input = document.querySelector('.js-query');
+input.addEventListener(
+  'input',
+  _.debounce(onInput, 300, { leading: true, trailing: false, maxWait: 500 })
+);
+
+function onInput(evt) {
+  console.log(evt.target.value);
+}
