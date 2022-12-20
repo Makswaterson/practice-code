@@ -56,8 +56,11 @@
 
 const content = document.querySelector('.content');
 let markup = '';
-let stepX = [];
-let stepO = [];
+const KEY_X = 'keyX';
+const KEY_O = 'keyO';
+const CURRENT_PLAYER = 'player';
+let stepX = JSON.parse(localStorage.getItem(KEY_X)) || [];
+let stepO = JSON.parse(localStorage.getItem(KEY_O)) ?? [];
 const win = [
   [1, 2, 3],
   [4, 5, 6],
@@ -68,7 +71,7 @@ const win = [
   [1, 5, 9],
   [3, 5, 7],
 ];
-let player = 'X';
+let player = localStorage.getItem(CURRENT_PLAYER) || 'X';
 for (let i = 1; i <= 9; i++) {
   markup += `<div class = 'item' data-id='${i}'></div>`;
 }
@@ -81,23 +84,32 @@ function onClickGameZone(evt) {
     const id = Number(evt.target.dataset.id);
     if (player == 'X') {
       stepX.push(id);
+      localStorage.setItem(KEY_X, stepX);
       const isWinner = checkWinner(stepX);
+      evt.target.textContent = player;
       if (isWinner) {
         console.log(`${player} is Winner!`);
-        reset();
+        setTimeout(() => {
+          reset();
+        }, 500);
         return;
       }
     } else {
       stepO.push(id);
+      localStorage.setItem(KEY_O, stepO);
       const isWinner = checkWinner(stepO);
+      evt.target.textContent = player;
       if (isWinner) {
         console.log(`${player} is Winner!`);
-        reset();
+        setTimeout(() => {
+          reset();
+        }, 500);
         return;
       }
     }
-    evt.target.textContent = player;
+
     player = player === 'X' ? 'O' : 'X';
+    localStorage.setItem(CURRENT_PLAYER, 'player');
   }
 }
 
@@ -107,8 +119,24 @@ function checkWinner(arr) {
 }
 
 function reset() {
+  localStorage.clear();
   content.innerHTML = markup;
   player = 'X';
   stepX = [];
   stepO = [];
 }
+
+(function () {
+  try {
+    [...content.children].forEach(item => {
+      const id = Number(item.dataset.id);
+      if (stepX.includes(id)) {
+        item.textContent = 'X';
+      } else if (stepO.includes(id)) {
+        item.textContent = 'O';
+      }
+    });
+  } catch (e) {
+    console.log('localStorage empty');
+  }
+})();
