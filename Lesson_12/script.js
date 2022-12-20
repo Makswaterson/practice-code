@@ -145,7 +145,7 @@ function onClickGameZone(evt) {
     const id = Number(evt.target.dataset.id);
     if (player == 'X') {
       stepX.push(id);
-      localStorage.setItem(KEY_X, stepX);
+      localStorage.setItem(KEY_X, JSON.stringify(stepX));
       const isWinner = checkWinner(stepX);
       evt.target.textContent = player;
       if (isWinner) {
@@ -157,7 +157,7 @@ function onClickGameZone(evt) {
       }
     } else {
       stepO.push(id);
-      localStorage.setItem(KEY_O, stepO);
+      localStorage.setItem(KEY_O, JSON.stringify(stepO));
       const isWinner = checkWinner(stepO);
       evt.target.textContent = player;
       if (isWinner) {
@@ -180,8 +180,8 @@ function checkWinner(arr) {
 }
 
 function reset() {
-  localStorage.clear();
   content.innerHTML = markup;
+  localStorage.clear();
   player = 'X';
   stepX = [];
   stepO = [];
