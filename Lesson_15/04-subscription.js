@@ -5,7 +5,18 @@ const refs = {
 const PROMPT_DELAY = 3000;
 const MAX_PROMPT_ATTEMPTS = 3;
 
-const modal = new BSN.Modal('#subscription-modal');
+let promptCounter = 0;
+let hasSubscribed = false;
 
-refs.modal.addEventListener('hide.bs.modal', openModal);
-refs.subscribeBtn.addEventListener('click', onSubscribeBtnClick);
+const intervalId = setInterval(() => {
+  if (promptCounter === MAX_PROMPT_ATTEMPTS || hasSubscribed) {
+    console.log('Зупинка інтервалу');
+    clearInterval(intervalId);
+    return;
+  }
+  console.log('Підпишись на розсилку - ' + Date.now());
+  promptCounter += 1;
+}, PROMPT_DELAY);
+
+// refs.modal.addEventListener('hide.bs.modal', openModal);
+// refs.subscribeBtn.addEventListener('click', onSubscribeBtnClick);
