@@ -17,6 +17,3 @@ const intervalId = setInterval(() => {
   console.log('Підпишись на розсилку - ' + Date.now());
   promptCounter += 1;
 }, PROMPT_DELAY);
-
-// refs.modal.addEventListener('hide.bs.modal', openModal);
-// refs.subscribeBtn.addEventListener('click', onSubscribeBtnClick);
