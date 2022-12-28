@@ -23,7 +23,7 @@ function determineWinner(horseP) {
   Promise.race(horseP).then(({ horse, time }) => {
     updateWinnerField(`🎉 Перемога ${horse}, фінішував за ${time}
     часу`);
-    updateResultsTable({ horse, time });
+    updateResultsTable({ horse, time, raceCounter });
   });
 }
 
@@ -41,7 +41,7 @@ function progressField(message) {
   refs.progressField.textContent = message;
 }
 
-function updateResultsTable({ horse, time }) {
+function updateResultsTable({ horse, time, raceCounter }) {
   const tr = ` <tr>
         <td>${raceCounter}</td>
         <td>${horse}</td>
