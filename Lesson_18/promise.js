@@ -53,3 +53,36 @@
  * Зробити так, щоб проміси і резолвилися, і реджектилися випадково.
  * Нехай кожен проміс своїм результатом повертає цю затримку та ім'я фреймворку, а при помилці ще й текст помилки 'Promise error'.
  */
+/*
+ * За допомогою Promise.race дочекайтеся завантаження першого промісу, що спрацював, і виведіть результат його роботи на екран: `✅ ${Framework_name} won with ${delay} ms`
+ * або результат помилки: `❌ ${error}! ${name} rejected in ${delay} ms`
+ */
+/*
+ * За допомогою Promise.all отримайте масив результатів
+ * Виведіть на екран інформацію, з якою затримкою виконався проміс для кожного фреймфорка: `✅ ${Framework_name} fulfilled in ${delay} ms`
+ * Або з якою затримкою зареджектився один із них: `❌ ${error}! ${Framework_name} rejected in ${delay} ms`
+ */
+
+const frameworks = ['React', 'Vue', 'Angular'];
+const getRandomDelay = () => Math.floor(Math.random() * 2000);
+
+const onSuccess = ({ delay, framework }) => {
+  console.log(`✅ ${framework} won with ${delay} ms`);
+};
+const onError = ({ delay, framework, error }) => {
+  console.log(`❌ ${error}! ${framework} rejected in ${delay} ms`);
+};
+
+function makePromise(framework) {
+  return new Promise((resolve, reject) => {
+    const delay = getRandomDelay();
+    setTimeout(() => {
+      if (delay <= 500) {
+        resolve({ delay, framework });
+      } else {
+        reject({ delay, framework, error: 'Promise error' });
+      }
+    }, delay);
+  });
+}
+makePromise();
