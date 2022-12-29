@@ -72,6 +72,9 @@ const onSuccess = ({ delay, framework }) => {
 const onError = ({ delay, framework, error }) => {
   console.log(`❌ ${error}! ${framework} rejected in ${delay} ms`);
 };
+const promises = frameworks.map(makePromise);
+// const promises = frameworks.map(framework => makePromise(framework));
+Promise.race(promises).then().catch();
 
 function makePromise(framework) {
   return new Promise((resolve, reject) => {
@@ -85,4 +88,4 @@ function makePromise(framework) {
     }, delay);
   });
 }
-makePromise();
+console.log(makePromise());
