@@ -18,3 +18,47 @@
 // console.log('4');
 
 // // Відповідь 1,4,3,2
+
+const container = document.querySelector('.js-container');
+const start = document.querySelector('.js-start');
+
+start.addEventListener('click', onClick);
+
+function onClick() {
+  const arr = [];
+  const childLength = container.children.length;
+  for (let index = 0; index < childLength; index++) {
+    const item = container.children[index];
+    item.textContent = '';
+    createPromise('🤩', '🤐', index * 500)
+      .then(win => {
+        markField(item, win);
+        arr.push(1);
+      })
+      .catch(lose => {
+        markField(item, lose);
+        arr.push(0);
+      })
+      .finally(() => {
+        if (arr.length === childLength) {
+        }
+      });
+  }
+}
+
+function markField(item, smile) {
+  item.textContent = smile;
+}
+
+function createPromise(win, lose, delay) {
+  return new Promise((resolve, reject) => {
+    const random = Math.random();
+    setTimeout(() => {
+      if (random > 0.5) {
+        resolve(win);
+      } else {
+        reject(lose);
+      }
+    }, delay);
+  });
+}
