@@ -40,8 +40,16 @@ function onClick() {
         arr.push(0);
       })
       .finally(() => {
-        if (arr.length === childLength) {
-        }
+        setTimeout(() => {
+          if (arr.length === childLength) {
+            const Winner = arr.every(item => item);
+            if (Winner) {
+              alert('Winner');
+            } else {
+              alert('Loser');
+            }
+          }
+        }, 100);
       });
   }
 }
