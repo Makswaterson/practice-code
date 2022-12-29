@@ -74,13 +74,19 @@ const onError = ({ delay, framework, error }) => {
 };
 const promises = frameworks.map(makePromise);
 // const promises = frameworks.map(framework => makePromise(framework));
-Promise.race(promises).then().catch();
+Promise.race(promises).then(onSuccess).catch(onError);
+
+Promise.all(promises)
+  .then(data => {
+    data.forEach(onSuccess);
+  })
+  .catch(onError);
 
 function makePromise(framework) {
   return new Promise((resolve, reject) => {
     const delay = getRandomDelay();
     setTimeout(() => {
-      if (delay <= 500) {
+      if (delay <= 1000) {
         resolve({ delay, framework });
       } else {
         reject({ delay, framework, error: 'Promise error' });
