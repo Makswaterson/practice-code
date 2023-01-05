@@ -7,14 +7,7 @@ navigator.geolocation?.getCurrentPosition(({ coords }) => {
   const { latitude, longitude } = coords;
   console.log(latitude);
   console.log(longitude);
-  getWeatherByCoords(latitude, longitude)
-    .then(data => {
-      const markup = createMarkup(data);
-      weatherWrapperRef.innerHTML = markup;
-    })
-    .catch(error => {
-      console.log(error.message);
-    });
+  getWeatherByCoords(latitude, longitude).then(onSuccess).catch(onError);
 });
 
 function getWeatherByCoords(lat, lon) {
@@ -27,14 +20,26 @@ function getWeatherByCoords(lat, lon) {
     return response.json();
   });
 }
+
+function getWeatherByCity(city) {
+  return fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=95632b02f9162f375a368971925f5209&units=metric`
+  ).then(response => {
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    return response.json();
+  });
+}
+
 function handleSubmit(evt) {
   evt.preventDefault();
 
   const { user_country } = evt.currentTarget.elements;
-  console.log(evt.currentTarget.elements);
-  console.log(user_country);
   const city = user_country.value.trim().toLowerCase();
   console.log(city);
+  getWeatherByCity(city).then(onSuccess).catch(onError);
+  user_country.value = '';
   if (!city) {
     return;
   }
@@ -56,6 +61,16 @@ function handleSubmit(evt) {
 //   .catch(error => {
 //     console.log(error.message);
 //   });
+
+function onSuccess(data) {
+  const markup = createMarkup(data);
+  weatherWrapperRef.innerHTML = markup;
+}
+
+function onError(error) {
+  console.log(error.message);
+  weatherWrapperRef.innerHTML = '';
+}
 
 function createMarkup({ weather, main, sys, name, clouds }) {
   console.log(new Date(sys.sunrise * 1000));
