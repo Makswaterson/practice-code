@@ -1,4 +1,7 @@
 const weatherWrapperRef = document.querySelector('.weather__wrapper');
+const formRef = document.querySelector('.js-search-form');
+
+formRef.addEventListener('submit', handleSubmit);
 
 navigator.geolocation?.getCurrentPosition(({ coords }) => {
   const { latitude, longitude } = coords;
@@ -16,13 +19,25 @@ navigator.geolocation?.getCurrentPosition(({ coords }) => {
 
 function getWeatherByCoords(lat, lon) {
   return fetch(
-    'https://api.openweathermap.org/data/2.5/weather?lat=50.5915417&lon=26.2712134&appid=95632b02f9162f375a368971925f5209&units=metric'
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=95632b02f9162f375a368971925f5209&units=metric`
   ).then(response => {
     if (!response.ok) {
       throw new Error(response.status);
     }
     return response.json();
   });
+}
+function handleSubmit(evt) {
+  evt.preventDefault();
+
+  const { user_country } = evt.currentTarget.elements;
+  console.log(evt.currentTarget.elements);
+  console.log(user_country);
+  const city = user_country.value.trim().toLowerCase();
+  console.log(city);
+  if (!city) {
+    return;
+  }
 }
 
 // fetch(
