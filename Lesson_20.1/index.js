@@ -25,10 +25,22 @@ refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
 function onSearch(evt) {
   evt.preventDefault();
+  if (newsApiService.query === '') {
+    return alert('Введіть в пусте поле!');
+  }
+  clearArticlesContainer();
   newsApiService.query = evt.currentTarget.elements.query.value;
   newsApiService.resetPage();
-  newsApiService.fetchArticles().then(articles => console.log(articles);)
+  newsApiService.fetchArticles().then(appendArticlesMarkup);
 }
 function onLoadMore() {
-  newsApiService.fetchArticles();
+  newsApiService.fetchArticles().then(appendArticlesMarkup);
+}
+
+function appendArticlesMarkup(articles) {
+  const markup = createMarkup(articles);
+  refs.articlesContainer.insertAdjacentHTML('beforeend', markup);
+}
+function clearArticlesContainer() {
+  refs.articlesContainer.innerHTML = '';
 }
