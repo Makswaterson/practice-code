@@ -63,6 +63,10 @@ function handleSubmit(evt) {
   unsplash
     .getPhotos()
     .then(({ results, total }) => {
+      if (results.length === 0) {
+        console.log('За вашим запитом картинки не знайдемо');
+        return;
+      }
       const markup = createMarkup(results);
       refs.list.insertAdjacentHTML('beforeend', markup);
       unsplash.calculateTotalPages(total);
