@@ -50,5 +50,10 @@ function createMarkup(arr) {
 
 function onLoadBtn() {
   page += 1;
-  ringsApi(page).then(({ docs }) => createMarkup(docs));
+  ringsApi(page).then(({ docs, page, pages }) => {
+    createMarkup(docs);
+    if (page === pages) {
+      load.hidden = true;
+    }
+  });
 }
