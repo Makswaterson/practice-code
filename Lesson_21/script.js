@@ -80,13 +80,13 @@ const BASE_URL = 'http://localhost:4040';
 //    12
 // );
 
-//////////////////////////////////// D DELETE - DELETE/////////////////
-function removeBook(bookId) {
-  const options = {
-    method: 'DELETE',
-  };
-  return fetch(`${BASE_URL}/books/${bookId}`, options)
-    .then(resp => resp.json())
-    .then(console.log());
-}
-removeBook(4);
+// //////////////////////////////////// D DELETE - DELETE/////////////////
+// function removeBook(bookId) {
+//   const options = {
+//     method: 'DELETE',
+//   };
+//   return fetch(`${BASE_URL}/books/${bookId}`, options)
+//     .then(resp => resp.json())
+//     .then(console.log());
+// }
+// removeBook(4);
