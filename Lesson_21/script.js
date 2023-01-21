@@ -93,6 +93,75 @@
 
 // //////////////////////////////////////////////////////////////
 
+// async function addBook(book) {
+//   const options = {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(book),
+//   };
+//  const book = await fetch(`${BASE_URL}/books`, options)
+//  const newBook = await (resp => resp.json());
+// return newBook;
+
+//підваріант//   return await (resp => resp.json())
+//
+// }
+
+// async function updateBookById() {
+//   try {
+//     const book = await addBook({
+//   title: 'Тестова книжка JS',
+//   author: 'Tomas',
+//   genres: 'JS',
+//   rating: '9',
+//     })
+//     console.log(book)
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+// addBook().then(resp => console.log(resp));
+
+// function getBooksByParam() {
+//   const books = {
+//     title: 'Тестова книжка Node.js',
+//     author: 'Tom',
+//     genres: 'JS',
+//     rating: '10',
+//   };
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => resolve(books[title]),500);
+//   })
+// }
+
+// async function bookByParamWait() {
+//   try {
+//     const titles = await getBooksByParam('title');
+//     const authors = await getBooksByParam('author');
+//     const genre = await getBooksByParam('genres');
+//     const rate = await getBooksByParam('rating');
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+// async function bookByParamWait() {
+//   try {
+//     const titles =  getBooksByParam('title');
+//     const authors = getBooksByParam('author');
+//     const genre = getBooksByParam('genres');
+//     const rate = getBooksByParam('rating');
+//     const books = await Promise.all([titles, authors, genre, rate]);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+//////////////////////////////////////////////////////////////////
+
 const refs = {
   list: document.querySelector('.js-contacts-container'),
   spiner: document.querySelector('.js-spinner'),
